@@ -19,10 +19,16 @@ import learnMoreData, { LearnMoreItem } from "../assets/data/learnMoreData";
 
 const profile = require("../assets/images/person.png");
 
-export default function Home() {
+export type HomeProps = {
+  navigation: any;
+};
+
+export default function Home({ navigation }: HomeProps) {
   const renderDiscoverItem = ({ item }: { item: DiscoverItem }) => {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Details", { item })}
+      >
         <ImageBackground
           source={item.image}
           style={[
@@ -52,13 +58,13 @@ export default function Home() {
 
   const renderLearnMoreItems = ({ item }: { item: LearnMoreItem }) => {
     return (
-      <TouchableOpacity>
-        <ImageBackground
-          source={item.image}
-          style={styles.learnMoreItem}
-          imageStyle={styles.learnMoreItemImage}
-        />
-      </TouchableOpacity>
+      <ImageBackground
+        source={item.image}
+        style={styles.learnMoreItem}
+        imageStyle={styles.learnMoreItemImage}
+      >
+        <Text style={styles.learnMoreItemTitle}>{item.title}</Text>
+      </ImageBackground>
     );
   };
 
@@ -235,8 +241,16 @@ const styles = StyleSheet.create({
     width: 170,
     height: 180,
     marginRight: 20,
+    justifyContent: "flex-end",
+    paddingHorizontal: 10,
+    paddingVertical: 15,
   },
   learnMoreItemImage: {
     borderRadius: 20,
+  },
+  learnMoreItemTitle: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: colors.white,
   },
 });
