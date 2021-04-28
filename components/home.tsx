@@ -15,6 +15,7 @@ import Entypo from "react-native-vector-icons/Entypo";
 import colors from "../assets/colors/colors";
 import discoverData, { DiscoverItem } from "../assets/data/discoverData";
 import activitiesData, { ActivityItem } from "../assets/data/activitiesData";
+import learnMoreData, { LearnMoreItem } from "../assets/data/learnMoreData";
 
 const profile = require("../assets/images/person.png");
 
@@ -46,6 +47,18 @@ export default function Home() {
         <Image source={item.image} style={styles.activityItemImage} />
         <Text style={styles.activityItemText}>{item.title}</Text>
       </View>
+    );
+  };
+
+  const renderLearnMoreItems = ({ item }: { item: LearnMoreItem }) => {
+    return (
+      <TouchableOpacity>
+        <ImageBackground
+          source={item.image}
+          style={styles.learnMoreItem}
+          imageStyle={styles.learnMoreItemImage}
+        />
+      </TouchableOpacity>
     );
   };
 
@@ -91,6 +104,20 @@ export default function Home() {
             <FlatList
               data={activitiesData}
               renderItem={renderActivities}
+              keyExtractor={(item) => item.id}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+            />
+          </View>
+        </View>
+
+        {/* Learn more */}
+        <View style={styles.learnMoreWrapper}>
+          <Text style={styles.learnMoreTitle}>Learn More</Text>
+          <View style={styles.learnMoreItemsWrapper}>
+            <FlatList
+              data={learnMoreData}
+              renderItem={renderLearnMoreItems}
               keyExtractor={(item) => item.id}
               horizontal
               showsHorizontalScrollIndicator={false}
@@ -192,5 +219,24 @@ const styles = StyleSheet.create({
   activityItemText: {
     fontSize: 12,
     color: colors.gray,
+  },
+  learnMoreWrapper: {
+    marginTop: 20,
+    marginHorizontal: 20,
+  },
+  learnMoreTitle: {
+    fontSize: 24,
+    fontWeight: "700",
+  },
+  learnMoreItemsWrapper: {
+    marginTop: 20,
+  },
+  learnMoreItem: {
+    width: 170,
+    height: 180,
+    marginRight: 20,
+  },
+  learnMoreItemImage: {
+    borderRadius: 20,
   },
 });

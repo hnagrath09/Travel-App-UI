@@ -16,4 +16,9 @@ const learnMoreData = [
   },
 ];
 
+export type LearnMoreItem = {
+  id: string;
+  title: string;
+  image: any;
+};
 export default learnMoreData;
