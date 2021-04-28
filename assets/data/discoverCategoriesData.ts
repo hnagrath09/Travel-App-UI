@@ -1,20 +1,20 @@
 const discoverCategoriesData = [
   {
     id: "discover-categories-1",
-    text: "All"
+    text: "All",
   },
   {
     id: "discover-categories-2",
-    text: "Destinations"
+    text: "Destinations",
   },
   {
     id: "discover-categories-3",
-    text: "Cities"
+    text: "Cities",
   },
   {
     id: "discover-categories-4",
-    text: "Experiences"
-  }
+    text: "Experiences",
+  },
 ];
 
 export default discoverCategoriesData;

@@ -7,13 +7,14 @@ import {
   Image,
   FlatList,
   TouchableOpacity,
-  ImageBackground
+  ImageBackground,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Feather from "react-native-vector-icons/Feather";
 import Entypo from "react-native-vector-icons/Entypo";
 import colors from "../assets/colors/colors";
 import discoverData, { DiscoverItem } from "../assets/data/discoverData";
+import activitiesData, { ActivityItem } from "../assets/data/activitiesData";
 
 const profile = require("../assets/images/person.png");
 
@@ -25,7 +26,7 @@ export default function Home() {
           source={item.image}
           style={[
             styles.discoverItem,
-            { marginLeft: item.id === "discover-1" ? 20 : 0 }
+            { marginLeft: item.id === "discover-1" ? 20 : 0 },
           ]}
           imageStyle={styles.discoverItemImage}
         >
@@ -38,6 +39,16 @@ export default function Home() {
       </TouchableOpacity>
     );
   };
+
+  const renderActivities = ({ item }: { item: ActivityItem }) => {
+    return (
+      <View style={styles.activityItemWrapper}>
+        <Image source={item.image} style={styles.activityItemImage} />
+        <Text style={styles.activityItemText}>{item.title}</Text>
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -66,7 +77,21 @@ export default function Home() {
             <FlatList
               data={discoverData}
               renderItem={renderDiscoverItem}
-              keyExtractor={item => item.id}
+              keyExtractor={(item) => item.id}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+            />
+          </View>
+        </View>
+
+        {/* Activities */}
+        <View style={styles.activitiesWrapper}>
+          <Text style={styles.activitiesTitle}>Activities</Text>
+          <View style={styles.activitiesItemsWrapper}>
+            <FlatList
+              data={activitiesData}
+              renderItem={renderActivities}
+              keyExtractor={(item) => item.id}
               horizontal
               showsHorizontalScrollIndicator={false}
             />
@@ -80,41 +105,40 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    color: colors.white
+    color: colors.white,
   },
   menuWrapper: {
     marginTop: 20,
     marginHorizontal: 20,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
   },
   profileImage: {
     width: 48,
     height: 48,
-    borderRadius: 10
+    borderRadius: 10,
   },
   discoverWrapper: {
-    marginTop: 20
-    // marginHorizontal: 20
+    marginTop: 20,
   },
   discoverTitle: {
     fontSize: 32,
-    fontWeight: "bold",
-    marginHorizontal: 20
+    fontWeight: "700",
+    marginHorizontal: 20,
   },
   discoverCategoriesWrapper: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 20,
-    marginHorizontal: 20
+    marginHorizontal: 20,
   },
   discoverCategoryText: {
     fontSize: 16,
-    color: colors.gray
+    color: colors.gray,
   },
   discoverItemsWrapper: {
-    marginTop: 20
+    marginTop: 20,
   },
   discoverItem: {
     width: 170,
@@ -122,26 +146,51 @@ const styles = StyleSheet.create({
     marginRight: 20,
     justifyContent: "flex-end",
     paddingHorizontal: 10,
-    paddingVertical: 15
+    paddingVertical: 15,
   },
   discoverItemImage: {
     width: "100%",
     height: "100%",
-    borderRadius: 20
+    borderRadius: 20,
   },
   discoverItemTitle: {
     color: colors.white,
     fontSize: 18,
-    fontWeight: "600"
+    fontWeight: "600",
   },
   discoverItemLocationWrapper: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 5
+    marginTop: 5,
   },
   discoverItemLocationText: {
     color: colors.white,
     fontSize: 12,
-    marginLeft: 5
-  }
+    marginLeft: 5,
+  },
+  activitiesWrapper: {
+    marginTop: 20,
+    marginHorizontal: 20,
+  },
+  activitiesTitle: {
+    fontSize: 24,
+    fontWeight: "700",
+  },
+  activitiesItemsWrapper: {
+    marginTop: 20,
+  },
+  activityItemWrapper: {
+    marginRight: 30,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  activityItemImage: {
+    width: 32,
+    height: 32,
+    marginBottom: 5,
+  },
+  activityItemText: {
+    fontSize: 12,
+    color: colors.gray,
+  },
 });
