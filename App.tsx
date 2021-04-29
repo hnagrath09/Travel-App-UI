@@ -1,21 +1,21 @@
-import React from "react";
-import { StyleSheet } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Entypo from "react-native-vector-icons/Entypo";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import Home from "./pages/home";
-import Liked from "./pages/liked";
-import Profile from "./pages/profile";
-import colors from "./assets/colors/colors";
-import Details from "./pages/details";
+import React from "react"
+import { StyleSheet } from "react-native"
+import { NavigationContainer } from "@react-navigation/native"
+import { createStackNavigator } from "@react-navigation/stack"
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import Entypo from "react-native-vector-icons/Entypo"
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
+import Home from "./pages/home"
+import Liked from "./pages/liked"
+import Profile from "./pages/profile"
+import colors from "./assets/colors/colors"
+import Details from "./pages/details"
 
-Entypo.loadFont();
-MaterialCommunityIcons.loadFont();
+Entypo.loadFont()
+MaterialCommunityIcons.loadFont()
 
-const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator()
+const Tab = createBottomTabNavigator()
 
 const TabNavigator = () => {
   return (
@@ -55,8 +55,8 @@ const TabNavigator = () => {
         }}
       />
     </Tab.Navigator>
-  );
-};
+  )
+}
 export default function App() {
   return (
     <NavigationContainer>
@@ -73,7 +73,7 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -92,4 +92,4 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
   },
-});
+})

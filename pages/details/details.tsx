@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import {
   View,
   Text,
@@ -6,20 +6,21 @@ import {
   ImageBackground,
   Dimensions,
   TouchableOpacity,
-} from "react-native";
-import Entypo from "react-native-vector-icons/Entypo";
-import colors from "../assets/colors/colors";
-import { DiscoverItem } from "../assets/data/discoverData";
+} from "react-native"
+import Entypo from "react-native-vector-icons/Entypo"
+import colors from "../../assets/colors/colors"
+import { DiscoverItem } from "../../assets/data/discoverData"
+import InfoItems from "./components/info-items"
 
-const height = Dimensions.get("window").height;
+const height = Dimensions.get("window").height
 
 export type DetailsProps = {
-  route: any;
-  navigation: any;
-};
+  route: any
+  navigation: any
+}
 
 export default function Details({ route, navigation }: DetailsProps) {
-  const { item }: { item: DiscoverItem } = route.params;
+  const { item }: { item: DiscoverItem } = route.params
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -51,35 +52,7 @@ export default function Details({ route, navigation }: DetailsProps) {
         </View>
         <Text style={styles.descriptionTitleText}>Description</Text>
         <Text style={styles.descriptionText}>{item.description}</Text>
-
-        {/* Info Items */}
-        <View style={styles.descriptionInfoWrapper}>
-          <View>
-            <Text style={styles.descriptionItemTitle}>PRICE</Text>
-            <View style={styles.descriptionItemTextWrapper}>
-              <Text style={styles.descriptionItemText}>${item.price}</Text>
-              <Text style={styles.descriptionItemSubText}> /person</Text>
-            </View>
-          </View>
-
-          <View>
-            <Text style={styles.descriptionItemTitle}>RATING</Text>
-            <View style={styles.descriptionItemTextWrapper}>
-              <Text style={styles.descriptionItemText}>{item.rating}</Text>
-              <Text style={styles.descriptionItemSubText}> /5</Text>
-            </View>
-          </View>
-
-          <View>
-            <Text style={styles.descriptionItemTitle}>DURATION</Text>
-            <View style={styles.descriptionItemTextWrapper}>
-              <Text style={styles.descriptionItemText}>{item.duration}</Text>
-              <Text style={styles.descriptionItemSubText}> hours</Text>
-            </View>
-          </View>
-        </View>
-
-        {/* Book Now Button */}
+        <InfoItems item={item} />
         <TouchableOpacity onPress={() => alert("Your trip is booked!")}>
           <View style={styles.bookNowButton}>
             <Text style={styles.buttonText}>Book Now</Text>
@@ -87,7 +60,7 @@ export default function Details({ route, navigation }: DetailsProps) {
         </TouchableOpacity>
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -177,26 +150,4 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     textAlign: "center",
   },
-  descriptionInfoWrapper: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 20,
-  },
-  descriptionItemTitle: {
-    color: colors.gray,
-    fontSize: 12,
-    fontWeight: "700",
-  },
-  descriptionItemTextWrapper: {
-    flexDirection: "row",
-    alignItems: "flex-end",
-  },
-  descriptionItemText: {
-    fontSize: 24,
-    fontWeight: "700",
-    color: colors.orange,
-  },
-  descriptionItemSubText: {
-    color: colors.gray,
-  },
-});
+})
