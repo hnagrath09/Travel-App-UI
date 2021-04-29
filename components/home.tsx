@@ -27,7 +27,7 @@ export default function Home({ navigation }: HomeProps) {
   const renderDiscoverItem = ({ item }: { item: DiscoverItem }) => {
     return (
       <TouchableOpacity
-        onPress={() => navigation.navigate("Details", { item })}
+        onPress={() => navigation.navigate("Details", { item: item })}
       >
         <ImageBackground
           source={item.image}
@@ -96,7 +96,7 @@ export default function Home({ navigation }: HomeProps) {
             <FlatList
               data={discoverData}
               renderItem={renderDiscoverItem}
-              keyExtractor={(item) => item.id}
+              keyExtractor={item => item.id}
               horizontal
               showsHorizontalScrollIndicator={false}
             />
@@ -110,7 +110,7 @@ export default function Home({ navigation }: HomeProps) {
             <FlatList
               data={activitiesData}
               renderItem={renderActivities}
-              keyExtractor={(item) => item.id}
+              keyExtractor={item => item.id}
               horizontal
               showsHorizontalScrollIndicator={false}
             />
@@ -124,7 +124,7 @@ export default function Home({ navigation }: HomeProps) {
             <FlatList
               data={learnMoreData}
               renderItem={renderLearnMoreItems}
-              keyExtractor={(item) => item.id}
+              keyExtractor={item => item.id}
               horizontal
               showsHorizontalScrollIndicator={false}
             />
