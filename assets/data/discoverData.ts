@@ -10,7 +10,7 @@ const discoverData: DiscoverItem[] = [
     liked: true,
     price: 50,
     rating: 5,
-    duration: 2
+    duration: 2,
   },
   {
     id: "discover-2",
@@ -23,19 +23,19 @@ const discoverData: DiscoverItem[] = [
     liked: true,
     price: 350,
     rating: 4.5,
-    duration: 3
-  }
-];
+    duration: 3,
+  },
+]
 export type DiscoverItem = {
-  id: string;
-  title: string;
-  location: string;
-  image: any;
-  imageBig: any;
-  description: any;
-  liked: boolean;
-  price: number;
-  rating: number;
-  duration: number;
-};
-export default discoverData;
+  id: string
+  title: string
+  location: string
+  image: any
+  imageBig: any
+  description: any
+  liked: boolean
+  price: number
+  rating: number
+  duration: number
+}
+export default discoverData

@@ -5,11 +5,11 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Entypo from "react-native-vector-icons/Entypo";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import Home from "./components/home";
-import Liked from "./components/liked";
-import Profile from "./components/profile";
+import Home from "./pages/home";
+import Liked from "./pages/liked";
+import Profile from "./pages/profile";
 import colors from "./assets/colors/colors";
-import Details from "./components/details";
+import Details from "./pages/details";
 
 Entypo.loadFont();
 MaterialCommunityIcons.loadFont();
@@ -24,7 +24,7 @@ const TabNavigator = () => {
         style: styles.tabBar,
         activeTintColor: colors.orange,
         inactiveTintColor: colors.gray,
-        showLabel: false
+        showLabel: false,
       }}
     >
       <Tab.Screen
@@ -33,7 +33,7 @@ const TabNavigator = () => {
         options={{
           tabBarIcon: ({ color }) => (
             <Entypo name="home" size={32} color={color} />
-          )
+          ),
         }}
       />
       <Tab.Screen
@@ -42,7 +42,7 @@ const TabNavigator = () => {
         options={{
           tabBarIcon: ({ color }) => (
             <Entypo name="heart" size={32} color={color} />
-          )
+          ),
         }}
       />
       <Tab.Screen
@@ -51,7 +51,7 @@ const TabNavigator = () => {
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="account" size={32} color={color} />
-          )
+          ),
         }}
       />
     </Tab.Navigator>
@@ -81,15 +81,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   tabBar: {
     backgroundColor: colors.white,
     borderTopLeftRadius: 20,
-    borderTopRightRadius: 20
+    borderTopRightRadius: 20,
   },
   tabIcon: {
     width: 20,
-    height: 20
-  }
+    height: 20,
+  },
 });
