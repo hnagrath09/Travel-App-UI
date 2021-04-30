@@ -1,17 +1,8 @@
 import React from "react"
-import {
-  View,
-  StyleSheet,
-  Text,
-  ScrollView,
-  Image,
-  FlatList,
-  ImageBackground,
-} from "react-native"
+import { View, StyleSheet, ScrollView, Image } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 import Feather from "react-native-vector-icons/Feather"
 import colors from "../../assets/colors/colors"
-import learnMoreData, { LearnMoreItem } from "../../assets/data/learnMoreData"
 import Activities from "./components/activities"
 import Discover from "./components/discover"
 import LearnMore from "./components/learn-more"
